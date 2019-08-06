@@ -37,7 +37,26 @@ const loadNotes = function() {
   }
 };
 
+const removeNote = function(title) {
+  const notes = loadNotes();
+  var i = undefined;
+  const titleExist = notes.filter(function(note, index) {
+    if (note.title === title) {
+      i = index;
+      return true;
+    }
+  });
+  if (titleExist.length > 0) {
+    const removedNote = notes.splice(i, 1);
+    console.log("Removed note is " + JSON.stringify(removedNote));
+    saveNotes(notes);
+  } else {
+    console.log("Note title doesn't exist!");
+  }
+};
+
 module.exports = {
   getNotes: getNotes,
-  addNote: addNote
+  addNote: addNote,
+  removeNote: removeNote
 };

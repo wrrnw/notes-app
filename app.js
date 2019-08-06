@@ -30,8 +30,8 @@ yargs.command({
 yargs.command({
   command: 'remove',
   describe: 'Remove a note',
-  handler: function() {
-    console.log('Removing the note');
+  handler: function(argv) {
+    notes.removeNote(argv.title);
   }
 });
 
